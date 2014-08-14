@@ -30,6 +30,9 @@ Sentinel.prototype.createClient = function(masterName, opts) {
 
     var endpoints = this.endpoints;
 
+    if(opts.redis){
+        redis = opts.redis;
+    }
 
     var netClient = new net.Socket();
     var client = new redis.RedisClient(netClient, opts);
@@ -279,4 +282,3 @@ function createClient(endpoints, masterName, options) {
 
 module.exports.Sentinel = Sentinel;
 module.exports.createClient = createClient;
-module.exports.redis = redis;
